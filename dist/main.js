@@ -1,0 +1,1 @@
+(()=>{console.log("this works");let o=new function(o,e){this.name=1,this.weight=2}(1,2);console.log(o)})();
