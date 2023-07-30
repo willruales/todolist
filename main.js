@@ -1,1 +1,1 @@
-(()=>{console.log("this works");let o=new function(o,e){this.name=1,this.weight=2}(1,2);console.log(o)})();
+(()=>{"use strict";const e=document.querySelector(".input");console.log("this works",e),console.log("pingping"),e.addEventListener("click",(function(e){e.preventDefault(),console.log("clarts")}))})();
