@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Getting Started</title>
-    <script src="https://unpkg.com/lodash@4.17.20"></script>
-  </head>
-  <body>
-does this run?
-<form>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Getting Started</title>
+  <script src="https://unpkg.com/lodash@4.17.20"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="testme">does this run?</div>
+  <form action="#" method="post">
     <!-- Text Input -->
     <label for="taskName">Task Name:</label>
     <input type="text" id="taskName" name="taskName" placeholder="Enter task name..." required>
@@ -17,9 +20,10 @@ does this run?
     <input type="number" id="taskWeight" name="taskWeight" min="0" max="100" step="1" required>
 
     <!-- Submit Button -->
-    <input type="submit" value="Submit">
-</form>
+    <input class="submit" type="submit" value="Submit">
+  </form>
 
-    <script src="main.js"></script>
-  </body>
+  <script src="bundle.js"></script>
+</body>
+
 </html>
