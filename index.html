@@ -8,19 +8,36 @@
 </head>
 
 <body>
-    <form id="form">
-        <!-- Text Input -->
-        <label for="taskName">Task Name:</label>
-        <input type="text" id="taskName" name="taskName" placeholder="Enter task name..." required>
 
-        <!-- Number Input -->
-        <label for="taskWeight">Task Weight:</label>
-        <input type="number" id="taskWeight" name="taskWeight" min="0" max="100" step="1" required>
+    <div class="sidebar">
+        <ul>
+            <li class="createNew">Create New Task</li>
+            <li>To Do List</li>
+            <li>Notification</li>
+        </ul>
+    </div>
 
-        <!-- Submit Button -->
-        <input type="submit" value="Submit">
-    </form>
+    <div class="modal">
+        <form id="form" autocomplete=off>
+            <!-- Text Input -->
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" name="taskName" placeholder="Enter task name..." required>
 
+            <label for="taskdescription">Task Description:</label>
+            <textarea type="text" id="Description" name="Description" rows="4" cols="40" placeholder="Explain"
+                required> </textarea>
+
+
+            <!-- Number Input -->
+            <label for="taskWeight">Task Weight:</label>
+            <input type="number" id="taskWeight" name="taskWeight" min="0" max="100" step="1" required>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Submit">
+            <!-- <input type="button" value="Submit" id="btnsubmit" -->
+            >
+        </form>
+    </div>
     <script src="bundle.js"></script>
 </body>
 
