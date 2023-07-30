@@ -1,9 +1,85 @@
-body {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(160, 106, 41);
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 5px #888888;
+    display: none;
 }
 
-.testme {
-    font-weight: 400;
+#form {
+
+
+    padding: 15px;
+    display: grid;
+    justify-items: baseline;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.sidebar {
+    background-color: #333;
+    color: rebeccapurple;
+    width: 200px;
+    height: 100vh;
+    top: 0;
+    left: -200px;
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+
+.content {
+    padding: 20px;
+    margin-left: 200px;
+    transition: margin-left 0.3s ease;
+}
+
+.open .content {
+    margin-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        left: -100%;
+    }
+
+    .open .sidebar {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+    }
 }
