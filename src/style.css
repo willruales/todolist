@@ -36,7 +36,7 @@ body {
     top: 0;
     left: -200px;
     transition: left 0.3s ease;
-    z-index: 999;
+    z-index: 0;
 }
 
 .sidebar.open {
@@ -82,4 +82,13 @@ body {
     .content {
         margin-left: 0;
     }
+}
+
+.main {
+    display: inline-flex;
+}
+
+.tasks {
+    width: 300px;
+    background-color: aqua;
 }
