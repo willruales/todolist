@@ -1,10 +1,11 @@
-console.log("this works")
 import "./style.css";
 import asign from "./asign";
 import domchange from "./domchange";
-import test from "./functions/test";
-
+import taskdomchange from "./taskdomchage";
 import projects from './projects.js';
+
+
+
 const form = document.getElementById('form');
 const newTask = document.querySelector(".createNew");
 const modal = document.querySelector(".modal");
@@ -15,7 +16,9 @@ const todo = document.querySelector(".todolist")
 
 form.addEventListener('submit', submit);
 newTask.addEventListener("click", popUp);
-taskbox.addEventListener("click", test)
+
+
+//taskbox.addEventListener("click", test)
 
 
 
@@ -23,41 +26,30 @@ function popUp() {
     modal.style.display = "flex";
     console.log("run")
 }
-// let projectss = {
-//     tasks: 0,
-// }
 
-
-
-// function projectss(name, age) {
-
-//     const person = {};
-
-
-//     person.name = name;
-//     person.age = age;
-
-
-//     person.sayHello = function () {
-//         console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
-//     };
-
-
-//     return person;
-// }
 
 function submit(event) {
     event.preventDefault();
 
     const myFormData = new FormData(event.target);
-    //console.log(myFormData);
 
-    domchange(event, myFormData);
+
     asign(myFormData);
-    console.log(list, projects)
+    let change = domchange(event, projects);
+    //taskdomchange(event, projects)
+
+
+
+    console.log(projects)
+    console.log(change)
+
+}
+
+function viewTasks() {
 
 
 }
+
 
 let addtoList = function addtoList() {
     let task = [];
@@ -89,5 +81,6 @@ function updatebox(x) {
 
 }
 console.log(list, "MO")
+
 
 export { list, projectList }

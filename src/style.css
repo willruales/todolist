@@ -47,11 +47,11 @@ body {
     list-style-type: none;
     padding: 20px;
     margin-top: 50px;
+
 }
 
 .sidebar li {
-    margin-bottom: 20px;
-    padding: 15px;
+
     font-size: 30px;
 }
 
@@ -93,4 +93,43 @@ body {
 .tasks {
     width: 300px;
     background-color: aqua;
+}
+
+.project {
+    display: block;
+    position: relative;
+    margin: 10px;
+    /* Adjust margin as needed */
+}
+
+.project:hover .delete-button {
+    display: inline-block;
+    background-color: #dc3545;
+    color: white;
+}
+
+.project:hover .project {
+    border: 2px solid #dc3545;
+    color: yellow;
+    /* Add border on hover */
+}
+
+.delete-button {
+    position: absolute;
+    display: none;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #dc3545;
+    border: none;
+    padding: 3px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+    /* Change color on hover */
 }
