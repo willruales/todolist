@@ -1,31 +1,28 @@
-import { list } from './index.js';
-import projects from './projects.js';
-
-export default function taskdomchange(event, callback) {
-
-    const form = document.getElementById('form');
-    const newTask = document.querySelector(".createNew");
-    const modal = document.querySelector(".modal");
-    const projectList = document.querySelector(".projectList")
-    const taskbox = document.querySelector(".tasks")
-    const list = [];
-    const todo = document.querySelector(".todolist");
-
-    event.preventDefault();
-    console.log(event, callback, 2)
+// import { list } from './index.js';
+// import projects from './projects.js';
+// import table from from './tasktable.js';
 
 
-    //let projectName = callback.get("projectName");
-    let description = projects.description;
+// const form = document.getElementById('form');
+// const newTask = document.querySelector(".createNew");
+// const modal = document.querySelector(".modal");
+// const projectList = document.querySelector(".projectList")
+// const taskbox = document.querySelector(".tasks")
 
 
-    let htmlString = `<li id="${description}">${description}</li>`;
+// export default function domchange(event, callback) {
+//     const addRowButton = document.getElementById("addRowButton");
+//     const taskTableBody = document.getElementById("taskTableBody");
 
+//     addRowButton.addEventListener("click", function () {
+//         const newRow = `
+//         <tr>
+//           <td>New Task</td>
+//           <td>Enter task description</td>
+//           <td><input type="checkbox"></td>
+//         </tr>
+//       `;
+//         taskTableBody.insertAdjacentHTML("beforeend", newRow);
+//     });
 
-
-    taskbox.insertAdjacentHTML("beforeend", htmlString);
-    modal.style.display = "none"
-    form.reset()
-
-
-}  
+// }
