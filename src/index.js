@@ -5,7 +5,7 @@ import taskdomchange from "./taskdomchage";
 import projects from './projects.js';
 import { table } from "./templates.js/tasktable";
 import { first } from "lodash";
-import { newRow } from "./templates.js/tableRow";
+//import { newRow } from "./templates.js/tableRow";
 
 
 
@@ -21,42 +21,6 @@ const classs = document.querySelector(".project")
 
 form.addEventListener('submit', submit);
 newTask.addEventListener("click", popUp);
-
-function addEventListenerToDynamicElement(element) {
-    element.addEventListener("click", function () {
-        console.log("Dynamic element clicked!", table);
-
-
-        // Use insertAdjacentHTML to add the new row HTML to the table body
-        taskbox.innerHTML = table;
-
-
-    });
-}
-
-
-
-
-
-
-function myfunction() {
-    const addRowButton = document.getElementById("addRowButton");
-    const taskTableBody = document.getElementById("taskTableBody");
-
-    addRowButton.addEventListener("click", function () {
-        const row = document.createElement("tr");
-        row.innerHTML = newRow;
-
-        //         `
-        //     <tr>
-        //       <td>New Task</td>
-        //       <td>Enter task description</td>
-        //       <td><input type="checkbox"></td>
-        //     </tr>
-        //   `;
-        taskTableBody.insertAdjacentHTML("beforeend", newRow);
-    });
-}
 
 
 
@@ -95,22 +59,6 @@ let addtoList = function addtoList() {
     }
     list.push(task)
     console.log("list:", list);
-}
-
-
-function domManipulation() {
-    for (let i of list) {
-        updatebox(i)
-
-    }
-}
-
-function updatebox(x) {
-    console.log(x)
-    for (let q of x) {
-        taskbox.textContent = q;
-    }
-
 }
 
 

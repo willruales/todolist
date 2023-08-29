@@ -1,6 +1,6 @@
-import { table } from "./templates.js/tasktable";
+import { tableElement } from "./templates.js/tasktable";
 import projects from './projects.js';
-
+import { templateElement } from "./templates.js/tableRow";
 
 const form = document.getElementById('form');
 const modal = document.querySelector(".modal");
@@ -19,7 +19,9 @@ export default function domchange(event, callback) {
     modal.style.display = "none"
 
     projectList.addEventListener("click", function () {
-        taskbox.innerHTML = table;
+        //taskbox.innerHTML = tableElement;
+        taskbox.appendChild(tableElement);
+
     })
     form.reset()
 
