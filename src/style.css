@@ -1,4 +1,4 @@
-.modal {
+.box-popup>div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -12,7 +12,21 @@
     display: none;
 }
 
-#form {
+.modal2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 5px #888888;
+    display: none;
+}
+
+.form {
 
 
     padding: 15px;

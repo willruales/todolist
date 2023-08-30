@@ -1,5 +1,7 @@
 import { newRow } from "./tableRow";
 
+const taskpopup = document.getElementById("task-popup")
+const taskForm = document.getElementById('taskForm');
 // Create the table element
 const tableElement = document.createElement("table");
 
@@ -47,6 +49,8 @@ tbodyElement.appendChild(buttonCell);
 
 
 function myfunction() {
+
+    taskpopup.style.display = "flex"
     // Create the new row using DOM manipulation
     const newRow = document.createElement("tr");
 
@@ -72,5 +76,27 @@ function myfunction() {
 
     tbodyElement.appendChild(newRow);
 }
+
+
+
+taskForm.addEventListener("submit", function (event) {
+    event.preventDefault()
+    // Get input values (replace with actual input elements)
+    const nameInput = document.getElementById("TaskName").value;
+    const descriptionInput = document.getElementById("TaskDescription").value;
+
+    // Create a new Person instance
+
+    // Store the newPerson instance in the people object using the name as the key
+
+
+    // Call the introduce method on the new instance
+    newProject.introduce();
+    form.reset()
+
+
+    console.log(people)
+});
+
 
 export { tableElement }

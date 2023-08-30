@@ -2,64 +2,81 @@ import "./style.css";
 import asign from "./asign";
 import domchange from "./domchange";
 import taskdomchange from "./taskdomchage";
-import projects from './projects.js';
-import { table } from "./templates.js/tasktable";
-import { first } from "lodash";
-//import { newRow } from "./templates.js/tableRow";
+import { tableElement } from "./templates.js/tasktable";
 
 
-
-const form = document.getElementById('form');
+const projectForm = document.getElementById('projectForm');
 const newTask = document.querySelector(".createNew");
 const modal = document.querySelector(".modal");
+const modal2 = document.querySelector(".modal2");
 const projectList = document.querySelector(".projectList")
 const taskbox = document.querySelector(".tasks")
+const projectpopup = document.getElementById("project-popup")
 
 const list = [];
-const todo = document.querySelector(".todolist")
-const classs = document.querySelector(".project")
 
-form.addEventListener('submit', submit);
+
+const projects = {};
+
+
+//form.addEventListener('submit', submit);
 newTask.addEventListener("click", popUp);
 
 
 
 function popUp() {
-    modal.style.display = "flex";
+    //modal.style.display = "flex";
+    projectpopup.style.display = "flex"
     console.log("run")
 }
 
 
-function submit(event) {
-    event.preventDefault();
 
-    const myFormData = new FormData(event.target);
-
-
-    asign(myFormData);
-    domchange(event, projects);
-
-}
-
-function viewTasks() {
-
-
-}
-
-
-let addtoList = function addtoList() {
-    let task = [];
-    for (let i = 0; i < form.elements.length; i++) {
-        const element = form.elements[i];
-        if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
-            task.push(element.value);
-
-        }
-
+class project {
+    constructor(name, description) {
+        this.name = name;
+        this.description = description;
     }
-    list.push(task)
-    console.log("list:", list);
+
+    introduce() {
+        console.log(`Hi, my name is ${this.name} and I am ${this.description} years old.`);
+    }
 }
+
+
+
+projectForm.addEventListener("submit", function (event) {
+    event.preventDefault()
+    // Get input values (replace with actual input elements)
+    const nameInput = document.getElementById("ProjectName").value;
+    const descriptionInput = document.getElementById("ProjectDescription").value;
+
+    // Create a new Person instance
+    const newProject = new project(nameInput, descriptionInput);
+
+    // Store the newPerson instance in the people object using the name as the key
+    projects[nameInput] = newProject;
+
+    // Call the introduce method on the new instance
+    newProject.introduce();
+    projectForm.reset()
+
+
+    domchange(nameInput)
+    console.log(projects)
+});
+
+projectList.addEventListener("click", function (e) {
+    //taskbox.innerHTML = tableElement;
+    taskbox.appendChild(tableElement);
+    let test = e.target.dataset.userId
+    console.log(test)
+
+    let projectSelect = e.target.dataset.userid;
+
+    console.log(show)
+
+})
 
 
 

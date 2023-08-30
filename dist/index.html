@@ -22,23 +22,46 @@
 
 
     </div>
+    <div class="box-popup">
+        <div id="project-popup">
+            <form class="form" autocomplete=off id="projectForm">
+                <!-- Text Input -->
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="ProjectName" name="projectName" placeholder="Enter Project name..." required>
 
-    <div class="modal">
-        <form id="form" autocomplete=off>
-            <!-- Text Input -->
-            <label for="projectName">Project Name:</label>
-            <input type="text" id="ProjectName" name="projectName" placeholder="Enter Project name..." required>
-
-            <label for="projectDescription"> Description:</label>
-            <textarea type="text" id="Description" name="description" rows="4" cols="40" placeholder="Explain"
-                required></textarea>
+                <label for="projectDescription"> Description:</label>
+                <textarea type="text" id="ProjectDescription" name="description" rows="4" cols="40"
+                    placeholder="Explain" required></textarea>
 
 
-            <!-- Submit Button -->
-            <button> submit</button>
-            <!-- <input type="button" value="Submit" id="btnsubmit" -->
-        </form>
+                <!-- Submit Button -->
+                <button> submit</button>
+                <!-- <input type="button" value="Submit" id="btnsubmit" -->
+            </form>
+        </div>
+        <div id="task-popup">
+            <form class="form" autocomplete=off id="taskForm">
+                <!-- Text Input -->
+                <label for="taskName">Task Name:</label>
+                <input type="text" id="TaskName" name="TaskName" placeholder="Enter Project name..." required>
+
+                <label for="taskDescription"> Description:</label>
+                <textarea type="text" id="TaskDescription" name="TaskDescription" rows="4" cols="40"
+                    placeholder="Explain" required></textarea>
+
+
+                <!-- Submit Button -->
+                <button> submit</button>
+                <!-- <input type="button" value="Submit" id="btnsubmit" -->
+            </form>
+        </div>
+
+
+
+
     </div>
+
+
     <script src="bundle.js"></script>
 </body>
 
