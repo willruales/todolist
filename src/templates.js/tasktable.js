@@ -85,17 +85,7 @@ taskForm.addEventListener("submit", function (event) {
     const nameInput = document.getElementById("TaskName").value;
     const descriptionInput = document.getElementById("TaskDescription").value;
 
-    // Create a new Person instance
-
-    // Store the newPerson instance in the people object using the name as the key
-
-
-    // Call the introduce method on the new instance
-    newProject.introduce();
-    form.reset()
-
-
-    console.log(people)
+    taskpopup.style.display = "none";
 });
 
 

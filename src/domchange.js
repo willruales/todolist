@@ -1,7 +1,7 @@
 const form = document.querySelector('.form');
 const projectpopup = document.getElementById("project-popup")
 const projectList = document.querySelector(".projectList")
-const taskbox = document.querySelector(".tasks")
+
 
 export default function domchange(x) {
 
