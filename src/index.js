@@ -9,7 +9,10 @@ const modal = document.querySelector(".modal");
 const modal2 = document.querySelector(".modal2");
 const projectList = document.querySelector(".projectList")
 const taskbox = document.querySelector(".tasks")
-const projectpopup = document.getElementById("project-popup")
+const projectpopup = document.getElementById("project-popup");
+
+const form = document.querySelector('.form');
+
 
 const list = [];
 
@@ -35,11 +38,9 @@ projectForm.addEventListener("submit", function (event) {
 
     projects[nameInput] = newProject;
 
-    newProject.introduce();
+    newProject.appendProject();
     projectForm.reset()
 
-
-    domchange(nameInput)
     console.log(projects)
 });
 
