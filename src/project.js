@@ -7,6 +7,7 @@ export default class project {
     constructor(name, description) {
         this.name = name;
         this.description = description;
+        this._tasks = [];
     }
 
     appendProject() {
@@ -20,5 +21,19 @@ export default class project {
         form.reset()
 
         return projectItem
+    }
+
+    test() {
+        console.log("testworks!")
+    }
+
+    get tasks() {
+        return this._tasks
+    }
+    set tasks(value) {
+        this._tasks = value
+    }
+    addTasks(obj) {
+        this.tasks.push(obj);
     }
 }

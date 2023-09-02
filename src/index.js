@@ -35,13 +35,13 @@ projectForm.addEventListener("submit", function (event) {
 
     const newProject = new project(nameInput, descriptionInput);
 
-
-    projects[nameInput] = newProject;
+    list.push(newProject)
+    //projects[nameInput] = newProject;
 
     newProject.appendProject();
     projectForm.reset()
 
-    console.log(projects)
+    console.log(list)
 });
 
 projectList.addEventListener("click", function (e) {
@@ -49,6 +49,11 @@ projectList.addEventListener("click", function (e) {
     createTable()
     let test = e.target.dataset.userid
     console.log(test)
+
+    //const selectedProject = list.filter(item => (item.name === test));
+    const selectedInstance = list.find(item => item.name === test);
+    selectedInstance.test()
+
 
 })
 
