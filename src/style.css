@@ -150,9 +150,10 @@ body {
     /* Change color on hover */
 }
 
-table {
+.table {
     width: 100%;
     border-collapse: collapse;
+    display: none;
 }
 
 th,

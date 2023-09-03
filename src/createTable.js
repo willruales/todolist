@@ -3,23 +3,26 @@ const taskbox = document.querySelector(".tasks")
 export default function createTable() {
     const taskpopup = document.getElementById("task-popup")
     const taskForm = document.getElementById('taskForm');
+    const table = document.querySelector(".table")
 
     const tableElement = document.createElement("table");
-
+    const addRowButton = document.querySelector(".add-row-button")
 
     const theadElement = document.createElement("thead");
     const headerRow = document.createElement("tr");
 
+    table.style.display = "table";
+
 
     const buttonCell = document.createElement("th");
     buttonCell.setAttribute("colspan", "3");
-    const addRowButton = document.createElement("button");
-    addRowButton.className = "add-row-button";
-    addRowButton.textContent = "Add Task";
-    addRowButton.addEventListener("click", addRowButton); // Replace with the actual function
+    // //const addRowButton = document.createElement("button");
+    // addRowButton.className = "add-row-button";
+    // addRowButton.textContent = "Add Task";
+    addRowButton.addEventListener("click", addRow); // Replace with the actual function
 
 
-    function addRowButton() {
+    function addRow() {
 
         taskpopup.style.display = "flex"
         // Create the new row using DOM manipulation
