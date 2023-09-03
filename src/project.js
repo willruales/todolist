@@ -1,6 +1,7 @@
 const form = document.querySelector('.form');
 const projectpopup = document.getElementById("project-popup")
 const projectList = document.querySelector(".projectList")
+import createTable from "./createTable";
 
 
 export default class project {
@@ -24,7 +25,8 @@ export default class project {
     }
 
     test() {
-        console.log("testworks!")
+        console.log("testworks!");
+        //createTable()
     }
 
     get tasks() {

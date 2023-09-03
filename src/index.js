@@ -1,7 +1,7 @@
 import "./style.css";
 import domchange from "./domchange";
 import project from "./project";
-import createTable from "./testFunction";
+import createTable from "./createTable";
 
 const projectForm = document.getElementById('projectForm');
 const newTask = document.querySelector(".createNew");
@@ -47,11 +47,11 @@ projectForm.addEventListener("submit", function (event) {
 projectList.addEventListener("click", function (e) {
 
     createTable()
-    let test = e.target.dataset.userid
-    console.log(test)
+    let projectSelect = e.target.dataset.userid
+    console.log(projectSelect)
 
     //const selectedProject = list.filter(item => (item.name === test));
-    const selectedInstance = list.find(item => item.name === test);
+    const selectedInstance = list.find(item => item.name === projectSelect);
     selectedInstance.test()
 
 

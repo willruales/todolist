@@ -16,40 +16,10 @@ export default function createTable() {
     const addRowButton = document.createElement("button");
     addRowButton.className = "add-row-button";
     addRowButton.textContent = "Add Task";
-    addRowButton.addEventListener("click", addRow); // Replace with the actual function
+    addRowButton.addEventListener("click", addRowButton); // Replace with the actual function
 
 
-
-    // Append the "Add Row" button to the button cell
-    buttonCell.appendChild(addRowButton);
-
-
-
-    // Create the header cells for Task Name, Task Description, and Completed
-    const headerCellTexts = ["Task Name", "Task Description", "Completed"];
-
-    headerCellTexts.forEach(cellText => {
-        const headerCell = document.createElement("th");
-        headerCell.textContent = cellText;
-        headerRow.appendChild(headerCell);
-    });
-
-    // Append the header row to the table header
-    theadElement.appendChild(headerRow);
-
-    // Create the table body
-    const tbodyElement = document.createElement("tbody");
-
-    // Append the table header and table body to the table
-    tableElement.appendChild(theadElement);
-    tableElement.appendChild(tbodyElement);
-
-    // Append the button cell to the header row
-    tbodyElement.appendChild(buttonCell);
-
-
-
-    function addRow() {
+    function addRowButton() {
 
         taskpopup.style.display = "flex"
         // Create the new row using DOM manipulation
