@@ -44,7 +44,7 @@ body {
 
 .sidebar {
     background-color: #333;
-    color: rebeccapurple;
+    color: rgb(176, 112, 241);
     width: 200px;
     height: 100vh;
     top: 0;
@@ -59,16 +59,18 @@ body {
 
 .tasks {
     width: 900px;
-    background-color: aqua;
+    background-color: rgba(195, 157, 16, 0.766);
     display: inline;
 
 }
 
-.projectInterface {
+.projectInterFace {
 
-    display: inline-grid;
+    display: revert-layer;
     flex: 4;
     margin: 55px;
+    width: 600px;
+    word-wrap: break-word;
 }
 
 
@@ -90,6 +92,11 @@ body {
     font-size: 30px;
     padding-top: 20px;
     padding-left: 10px;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    align-items: center;
 }
 
 .sidebar a {
@@ -124,53 +131,76 @@ body {
 }
 
 .project {
-    display: block;
-    position: relative;
-    margin: 10px;
-    /* Adjust margin as needed */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.project:hover .delete-button {
-    display: inline-block;
-    background-color: #dc3545;
-    color: white;
+.project:hover .delete-button,
+.edit {
+    display: flex;
+    /* background-color: #dc3545;
+    color: white; */
 }
 
-.project:hover .project {
-    border: 2px solid #dc3545;
-    color: yellow;
-    /* Add border on hover */
+.project:hover {
+    /* border: 2px solid #dc3545; */
+    color: rgba(16, 195, 55, 0.766)
+        /* Add border on hover */
+}
+
+.project:hover .modify {
+
+    display: flex;
+}
+
+.modify {
+    background-color: transparent;
+    display: none;
 }
 
 .delete-button {
-    position: absolute;
-    display: none;
-    top: 50%;
     right: -20px;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
     background-color: transparent;
-    color: #dc3545;
+    color: red;
+    display: none;
     border: none;
-    padding: 3px 8px;
-    font-size: 14px;
+    font-size: 22px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
+
+}
+
+.modify {
+    display: none;
+    color: rgb(176, 112, 241);
+}
+
+.edit:hover {
+    display: block;
+    color: rgba(195, 157, 16, 0.766)
 }
 
 .delete-button:hover {
-    background-color: #c82333;
+    display: block;
+    /* background-color: #c82333; */
     /* Change color on hover */
+    color: rgba(195, 157, 16, 0.766)
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
     display: none;
+    border-collapse: collapse;
 }
 
 th,
 td {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(195, 157, 16, 0.766);
     padding: 8px;
     text-align: left;
 }

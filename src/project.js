@@ -14,7 +14,7 @@ export default class project {
     appendProject() {
         // console.log(`Hi, my name is ${this.name} and I am ${this.description} years old.`);
         const projectItem = document.createElement("div");
-        let htmlString = `<li class="project" data-userid =${this.name}>${this.name}<button class="delete-button">x</button></li> `;
+        let htmlString = `<li class="project" ><div data-userid =${this.name}>${this.name}</div>  <div class="modify">  <div class="edit">⚙</div><button class="delete-button">🗑</button>      </div></li> `;
 
         projectItem.innerHTML = htmlString;
         projectList.appendChild(projectItem)

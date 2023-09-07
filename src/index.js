@@ -14,6 +14,8 @@ const projectpopup = document.getElementById("project-popup");
 const taskSubmit = document.querySelector(".task-submit")
 const form = document.querySelector('.form');
 const taskpopup = document.getElementById("task-popup")
+const projectHeader = document.querySelector(".projectHeader")
+const projectDescription = document.querySelector(".projectDescription")
 
 newTask.addEventListener("click", popUp);
 
@@ -35,13 +37,13 @@ projectForm.addEventListener("submit", function (event) {
 
 projectList.addEventListener("click", function (event) {
     event.preventDefault()
-    let eventSelect = projectSelect(event)
+    let eventSelect = projectSelect(event)//rearange select att on html
 
     eventSelect.createTable()
     populateTable(eventSelect.tasks)
 
-    //eventSelect.tasks
-
+    projectHeader.innerHTML = eventSelect.name;
+    projectDescription.innerHTML = eventSelect.description
     taskpopup.style.display = "none";
 
 
