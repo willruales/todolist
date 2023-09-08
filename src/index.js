@@ -77,4 +77,24 @@ taskSubmit.addEventListener("click", function (event, selectedInstance) {
 
 });
 
+const tbody = document.querySelector(".tbody");
+
+// Add a click event listener to the tbody element
+tbody.addEventListener("click", function (event) {
+    const clickedElement = event.target;
+    let eventSelect = projectSelect(event)
+
+    // Check if the clicked element is a table cell (td)
+    if (clickedElement.tagName === "TD") {
+        // Get the parent row (tr) of the clicked cell
+        const clickedRow = clickedElement.parentElement;
+
+        // Toggle a "selected" class on the clicked row
+        clickedRow.classList.toggle("selected");
+    }
+
+
+});
+
+
 export { projectList }
