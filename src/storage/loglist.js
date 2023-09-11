@@ -1,0 +1,3 @@
+const logList = []
+
+export { logList }

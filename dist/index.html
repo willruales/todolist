@@ -36,7 +36,7 @@
             <h2 class="projectHeader">first</h2>
             <div class="projectDescription">mymymy</div>
             <div class="selectedTask">
-                <table id="taskTable" class="table">
+                <table class="taskTable">
                     <thead>
                         <tr>
                             <th>Log</th>
@@ -47,7 +47,7 @@
                         <!-- Dynamic table rows will be added here using JavaScript -->
 
                     </tbody>
-                    <td colspan="2"> <button class="add-row-button" id="addTaskButton">Add Log</button></td>
+                    <td colspan="2"> <button class="add-row-button" id="addLogButton">Add Log</button></td>
                 </table>
             </div>
 
@@ -86,7 +86,19 @@
                 <!-- <input type="button" value="Submit" id="btnsubmit" -->
             </form>
         </div>
+        <div id="log-popup">
+            <form class="form" autocomplete=off id="taskForm">
+                <!-- Text Input -->
+                <label for="logName">Log Name:</label>
+                <input type="text" id="logName" name="LogName" placeholder="Enter Log..." required>
 
+
+
+                <!-- Submit Button -->
+                <button id="logSubmit">submit</button>
+                <!-- <input type="button" value="Submit" id="btnsubmit" -->
+            </form>
+        </div>
 
 
 
