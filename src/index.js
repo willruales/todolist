@@ -6,6 +6,8 @@ import popUp from "./functions/popUp";
 import projectSelect from "./functions/projectSelect";
 import list from "./storage/list";
 import { taskData } from "./storage/task";
+import { taskSelect } from "./functions/taskSelect";
+import { log } from "./storage/log";
 
 const projectForm = document.getElementById('projectForm');
 const newTask = document.querySelector(".createNew");;
@@ -25,6 +27,7 @@ const logSubmit = document.querySelector("#logSubmit")
 newTask.addEventListener("click", popUp);
 
 let eventSelect = null;
+let newTaskSelect = null;
 
 projectForm.addEventListener("submit", function (event) {
     event.preventDefault()
@@ -51,7 +54,7 @@ projectList.addEventListener("click", function (event) {
     projectHeader.innerHTML = eventSelect.name;
     projectDescription.innerHTML = eventSelect.description
     taskpopup.style.display = "none";
-
+    console.log(eventSelect)
 
     return eventSelect
 
@@ -65,16 +68,18 @@ taskSubmit.addEventListener("click", function (event, selectedInstance) {
     // const formData = {
     //     completed: false
     // };
+
+    newTaskSelect = Object.create(taskData)
     for (const field of form.elements) {
 
         if (field.name && field.type !== 'submit') {
-            taskData[field.name] = field.value;
+            newTaskSelect[field.name] = field.value;
         }
     }
 
     taskpopup.style.display = "none";
 
-    eventSelect.addTasks(taskData)
+    eventSelect.addTasks(newTaskSelect)
     populateTable(eventSelect.tasks)
 
 
@@ -84,23 +89,11 @@ taskSubmit.addEventListener("click", function (event, selectedInstance) {
 
 const tbody = document.querySelector(".tbody");
 
-// Add a click event listener to the tbody element
 tbody.addEventListener("click", function (event) {
     const clickedElement = event.target.dataset.userid;
-    //let eventSelect = projectSelect(event)
     console.log(clickedElement)
     console.log(eventSelect)
     taskTable.style.display = "table";
-
-    // // Check if the clicked element is a table cell (td)
-    // if (clickedElement.tagName === "TD") {
-    //     // Get the parent row (tr) of the clicked cell
-    //     const clickedRow = clickedElement.parentElement;
-
-    //     // Toggle a "selected" class on the clicked row
-    //     clickedRow.classList.toggle("selected");
-    // }
-
 
 });
 
@@ -112,11 +105,25 @@ logRowButton.addEventListener("click", function (event) {
 
 logPop.addEventListener("submit", function (event) {
     event.preventDefault()
+    logPop.style.display = "none"
     const logName = document.getElementById("logName").value
+    const form = document.getElementById("logForm")
     console.log(eventSelect.tasks)
 
+    let newLog = Object.create(log)
+    for (const field of form.elements) {
+
+        if (field.name && field.type !== 'submit') {
+            newLog[field.name] = field.value;
+
+        }
+    }
+    console.log(newLog)
+
+    newTaskSelect.logs.push(newLog)
+    console.log(newTaskSelect)
 }
 )
 
 
-export { projectList }
+export { projectList, eventSelect }
