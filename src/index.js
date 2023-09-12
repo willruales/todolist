@@ -1,10 +1,12 @@
 import "./style.css";
 import project from "./project";
+import { format, compareAsc } from 'date-fns'
 
 import populateTable from "./functions/populateTable";
 import popUp from "./functions/popUp";
 import projectSelect from "./functions/projectSelect";
 import list from "./storage/list";
+import populateLogTable from "./functions/populateLogTable";
 import { taskData } from "./storage/task";
 import { taskSelect } from "./functions/taskSelect";
 import { log } from "./storage/log";
@@ -22,7 +24,10 @@ const projectDescription = document.querySelector(".projectDescription")
 const taskTable = document.querySelector(".taskTable")
 const logRowButton = document.getElementById("addLogButton");
 const logPop = document.querySelector("#log-popup")
-const logSubmit = document.querySelector("#logSubmit")
+const logSubmit = document.querySelector("#logSubmit");
+const logTable = document.querySelector('.logTable');
+const logTableBody = document.getElementById('logtablebody');
+
 
 newTask.addEventListener("click", popUp);
 
@@ -32,10 +37,13 @@ let newTaskSelect = null;
 projectForm.addEventListener("submit", function (event) {
     event.preventDefault()
 
+
+
     const nameInput = document.getElementById("ProjectName").value;
+    const modifiedName = nameInput.replace(/ /g, "");
     const descriptionInput = document.getElementById("ProjectDescription").value;
 
-    const newProject = new project(nameInput, descriptionInput);
+    const newProject = new project(modifiedName, descriptionInput);
 
     list.push(newProject)
     //projects[nameInput] = newProject;
@@ -70,6 +78,7 @@ taskSubmit.addEventListener("click", function (event, selectedInstance) {
     // };
 
     newTaskSelect = Object.create(taskData)
+    newTaskSelect.logs = [];
     for (const field of form.elements) {
 
         if (field.name && field.type !== 'submit') {
@@ -83,7 +92,7 @@ taskSubmit.addEventListener("click", function (event, selectedInstance) {
     populateTable(eventSelect.tasks)
 
 
-    // return taskData
+    return newTaskSelect
 
 });
 
@@ -91,9 +100,32 @@ const tbody = document.querySelector(".tbody");
 
 tbody.addEventListener("click", function (event) {
     const clickedElement = event.target.dataset.userid;
+
+
+    newTaskSelect = eventSelect.tasks[clickedElement]
+    console.log(newTaskSelect)
     console.log(clickedElement)
-    console.log(eventSelect)
-    taskTable.style.display = "table";
+
+    logTableBody.innerHTML = '';
+    let currentTask = newTaskSelect.logs
+
+    // for (const logEntry of currentTask) {
+    //     const newRow = logTableBody.insertRow();
+
+    //     // Create and insert cells for each data item
+    //     const logCell = newRow.insertCell(0);
+    //     const dateCell = newRow.insertCell(1);
+
+
+    //     // Populate the cells with data from the current log entry
+    //     logCell.textContent = logEntry.LogName; // Access the field value
+    //     dateCell.textContent = logEntry.timestamp;
+    // }
+
+    populateLogTable(currentTask)
+
+    logTable.style.display = "table";
+    return newTaskSelect
 
 });
 
@@ -104,26 +136,45 @@ logRowButton.addEventListener("click", function (event) {
 })
 
 logPop.addEventListener("submit", function (event) {
-    event.preventDefault()
-    logPop.style.display = "none"
-    const logName = document.getElementById("logName").value
-    const form = document.getElementById("logForm")
-    console.log(eventSelect.tasks)
+    event.preventDefault();
+    logPop.style.display = "none";
+    logTableBody.innerHTML = '';
+    const form = document.getElementById("logForm");
 
-    let newLog = Object.create(log)
+
+    let newLog = {};
+
     for (const field of form.elements) {
-
         if (field.name && field.type !== 'submit') {
+
             newLog[field.name] = field.value;
+            newLog["timestamp"] = new Date().toISOString();
 
         }
     }
-    console.log(newLog)
+    newTaskSelect.logs.push(newLog);
+    console.log(newTaskSelect);
 
-    newTaskSelect.logs.push(newLog)
-    console.log(newTaskSelect)
-}
-)
+
+    let currentTask = newTaskSelect.logs
+
+    // for (const logEntry of currentTask) {
+    //     const newRow = logTableBody.insertRow();
+
+    //     // Create and insert cells for each data item
+    //     const logCell = newRow.insertCell(0);
+    //     const dateCell = newRow.insertCell(1);
+
+
+    //     // Populate the cells with data from the current log entry
+    //     logCell.textContent = logEntry.LogName; // Access the field value
+    //     dateCell.textContent = logEntry.timestamp;
+    // }
+
+    populateLogTable(currentTask)
+
+});
+
 
 
 export { projectList, eventSelect }

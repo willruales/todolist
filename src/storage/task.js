@@ -1,7 +1,7 @@
 const taskData = {
     //id: taskIdCounter++,
     completed: false,
-    logs: []
+    // logs: []
 
 };
 
