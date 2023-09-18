@@ -10,13 +10,22 @@ import populateLogTable from "./functions/populateLogTable";
 import { taskData } from "./storage/task";
 import { taskSelect } from "./functions/taskSelect";
 import { log } from "./storage/log";
+import createProjectListItem from "./functions/loopList";
+import deleteProject from "./functions/deleteProject";
+import hidePopUp from "./functions/hidePopUp";
+
+
 
 const projectForm = document.getElementById('projectForm');
 const newTask = document.querySelector(".createNew");;
 const projectList = document.querySelector(".projectList")
 const taskbox = document.querySelector(".tasks")
 const projectpopup = document.getElementById("project-popup");
-const taskSubmit = document.querySelector(".task-submit")
+const projectpopupedit = document.getElementById("projectedit-popup");
+const editForm = document.getElementById("projectedit-popup");
+
+const projecteditsubmit = projectpopupedit.querySelector("button")
+const taskSubmit = document.querySelector(".taskSubmit")
 const form = document.querySelector('.form');
 const taskpopup = document.getElementById("task-popup")
 const projectHeader = document.querySelector(".projectHeader")
@@ -27,7 +36,11 @@ const logPop = document.querySelector("#log-popup")
 const logSubmit = document.querySelector("#logSubmit");
 const logTable = document.querySelector('.logTable');
 const logTableBody = document.getElementById('logtablebody');
+const taskHeader = document.querySelector(".taskTitle")
+const deleteButton = document.querySelector(".delete-button")
 
+
+let projectListElements = null;
 
 newTask.addEventListener("click", popUp);
 
@@ -37,46 +50,91 @@ let newTaskSelect = null;
 projectForm.addEventListener("submit", function (event) {
     event.preventDefault()
 
-
-
     const nameInput = document.getElementById("ProjectName").value;
-    const modifiedName = nameInput.replace(/ /g, "");
     const descriptionInput = document.getElementById("ProjectDescription").value;
 
-    const newProject = new project(modifiedName, descriptionInput);
+    const newProject = new project(nameInput, descriptionInput);
 
     list.push(newProject)
     //projects[nameInput] = newProject;
 
-    newProject.appendProject();
-    projectForm.reset()
+    //newProject.appendProject(nameInput);
+    projectForm.reset();
+
+    projectList.innerHTML = "";
+    createProjectListItem();
+    projectpopup.style.display = "none";
+
 });
 
 projectList.addEventListener("click", function (event) {
-    event.preventDefault()
-    eventSelect = projectSelect(event)//rearange select att on html
+    if (event.target.classList.contains("edit")) {
+        eventSelect = projectSelect(event)//rearange select att on html
 
-    eventSelect.createTable()
-    populateTable(eventSelect.tasks)
+        const test = event.target.parentElement.getAttribute('data-userid');
+        console.log(test)
+        eventSelect = projectSelect(event)//rearange select att on html
 
-    projectHeader.innerHTML = eventSelect.name;
-    projectDescription.innerHTML = eventSelect.description
-    taskpopup.style.display = "none";
-    console.log(eventSelect)
 
-    return eventSelect
+        editForm.style.display = "flex";
+        // const nameInput = document.getElementById("ProjectName");
+        // const descriptionInput = document.getElementById("ProjectDescription");
+        // nameInput.value = eventSelect.name;
+        // descriptionInput.value = eventSelect.description;
+
+
+
+
+
+
+
+        const editButton = document.querySelector(".edit");
+
+
+        editButton.addEventListener("click", function () {
+            const userId = projectItem.querySelector('[data-userid]').getAttribute("data-userid");
+            console.log(`Edit button clicked for user with ID: ${userId}`);
+            const projectpopupedit = document.getElementById("projectedit-popup");
+            projectpopupedit.style.display = flex;
+
+        });
+
+
+        console.log(eventSelect)
+    }
+    else if (event.target.classList.contains("delete")) {
+        console.log("deleteseen")
+        eventSelect = projectSelect(event);
+        deleteProject(eventSelect.modifiedName);
+        projectList.innerHTML = "";
+
+        createProjectListItem();
+
+    }
+
+    else {
+        event.preventDefault()
+        eventSelect = projectSelect(event)//rearange select att on html
+        console.log(eventSelect)
+        eventSelect.createTable()
+        //populateTable(eventSelect.tasks)
+        eventSelect.appendTable()
+
+        projectHeader.innerHTML = eventSelect.name;
+        projectDescription.innerHTML = eventSelect.description
+        taskpopup.style.display = "none";
+        console.log(eventSelect)
+
+        return eventSelect
+    }
+    logTable.style.display = "none"
 
 })
 
-taskSubmit.addEventListener("click", function (event, selectedInstance) {
+taskpopup.addEventListener("submit", function (event) {
     event.preventDefault()
     const form = taskSubmit.parentElement;
-    eventSelect = projectSelect(event)
-
-    // const formData = {
-    //     completed: false
-    // };
-
+    //eventSelect = projectSelect(event)
     newTaskSelect = Object.create(taskData)
     newTaskSelect.logs = [];
     for (const field of form.elements) {
@@ -87,7 +145,7 @@ taskSubmit.addEventListener("click", function (event, selectedInstance) {
     }
 
     taskpopup.style.display = "none";
-
+    console.log(eventSelect)
     eventSelect.addTasks(newTaskSelect)
     populateTable(eventSelect.tasks)
 
@@ -100,28 +158,13 @@ const tbody = document.querySelector(".tbody");
 
 tbody.addEventListener("click", function (event) {
     const clickedElement = event.target.dataset.userid;
-
-
+    taskHeader.innerHTML = "";
     newTaskSelect = eventSelect.tasks[clickedElement]
     console.log(newTaskSelect)
     console.log(clickedElement)
-
+    taskHeader.innerHTML = newTaskSelect.TaskName
     logTableBody.innerHTML = '';
     let currentTask = newTaskSelect.logs
-
-    // for (const logEntry of currentTask) {
-    //     const newRow = logTableBody.insertRow();
-
-    //     // Create and insert cells for each data item
-    //     const logCell = newRow.insertCell(0);
-    //     const dateCell = newRow.insertCell(1);
-
-
-    //     // Populate the cells with data from the current log entry
-    //     logCell.textContent = logEntry.LogName; // Access the field value
-    //     dateCell.textContent = logEntry.timestamp;
-    // }
-
     populateLogTable(currentTask)
 
     logTable.style.display = "table";
@@ -158,23 +201,42 @@ logPop.addEventListener("submit", function (event) {
 
     let currentTask = newTaskSelect.logs
 
-    // for (const logEntry of currentTask) {
-    //     const newRow = logTableBody.insertRow();
-
-    //     // Create and insert cells for each data item
-    //     const logCell = newRow.insertCell(0);
-    //     const dateCell = newRow.insertCell(1);
-
-
-    //     // Populate the cells with data from the current log entry
-    //     logCell.textContent = logEntry.LogName; // Access the field value
-    //     dateCell.textContent = logEntry.timestamp;
-    // }
 
     populateLogTable(currentTask)
 
 });
 
 
+editForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    projectList.innerHTML = "";
 
+    console.log(eventSelect);
+    const nameInput = document.getElementById("editProjectName").value;
+    const descriptionInput = document.getElementById("editProjectDescription").value;
+    eventSelect.name = nameInput;
+    eventSelect.description = descriptionInput;
+    eventSelect.getModifiedName()
+    const projecteditsubmit = projectpopupedit.querySelector("button")
+
+    editForm.style.display = "none"
+    createProjectListItem();
+    console.log(eventSelect.modifiedName)
+
+});
+
+
+const cancelButtons = document.querySelectorAll(".cancel");
+console.log(cancelButtons)
+
+cancelButtons.forEach((cancelButton) => {
+    cancelButton.addEventListener("click", function () {
+        console.log("hy")
+        const popupBox = cancelButton.parentElement.parentElement;
+        console.log(popupBox)
+        if (popupBox) {
+            popupBox.style.display = "none";
+        }
+    });
+});
 export { projectList, eventSelect }

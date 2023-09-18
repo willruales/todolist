@@ -62,15 +62,18 @@ body {
 
 }
 
+
 .projectInterFace {
 
     display: revert-layer;
-    flex: 4;
+    flex: 1;
     margin: 55px;
     width: 600px;
     word-wrap: break-word;
+    flex-direction: column;
+    align-content: space-evenly;
+    font-size: 20px;
 }
-
 
 
 .sidebar.open {
@@ -135,7 +138,7 @@ body {
     justify-content: center;
 }
 
-.project:hover .delete-button,
+.project:hover .delete,
 .edit {
     display: flex;
     /* background-color: #dc3545;
@@ -144,8 +147,7 @@ body {
 
 .project:hover {
     /* border: 2px solid #dc3545; */
-    color: rgba(16, 195, 55, 0.766)
-        /* Add border on hover */
+    color: rgba(195, 157, 16, 0.766)
 }
 
 .project:hover .modify {
@@ -158,7 +160,7 @@ body {
     display: none;
 }
 
-.delete-button {
+.delete {
     right: -20px;
     /* transform: translateY(-50%); */
     background-color: transparent;
@@ -182,7 +184,7 @@ body {
     color: rgba(195, 157, 16, 0.766)
 }
 
-.delete-button:hover {
+.delete:hover {
     display: block;
     /* background-color: #c82333; */
     /* Change color on hover */
@@ -248,9 +250,17 @@ tr:nth-child(even) {
     border-collapse: collapse;
 }
 
-.logTable {
-    display: none;
+.tbody>tr>td {
+
+    text-decoration: turquoise;
+    font-size: 20px;
 }
 
-/* .add-row-button {
-    /* Add your styles for the Add Task button here */
+.projectDescription {
+    font-size: 20px;
+}
+
+.taskTitle {
+
+    font-size: 20px;
+}

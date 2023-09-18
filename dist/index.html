@@ -10,7 +10,7 @@
 <body>
     <div class="main">
         <div class="sidebar">
-            <li class="createNew"> New Project</li>
+            <li class="createNew">New Project</li>
             <ul class="projectList">
 
             </ul>
@@ -33,9 +33,10 @@
 
         </div>
         <div class="projectInterFace">
-            <h2 class="projectHeader">first</h2>
-            <div class="projectDescription">mymymy</div>
+            <h2 class="projectHeader"></h2>
+            <div class="projectDescription"></div>
             <div class="selectedTask">
+                <div class="taskTitle">Create Project/Select </div>
                 <table class="logTable">
                     <thead>
                         <tr>
@@ -54,7 +55,7 @@
         </div>
     </div>
     <div class="box-popup">
-        <div id="project-popup">
+        <div class="hide" id="project-popup">
             <form class="form" autocomplete=off id="projectForm">
                 <!-- Text Input -->
                 <label for="projectName">Project Name:</label>
@@ -66,11 +67,28 @@
 
 
                 <!-- Submit Button -->
-                <button> submit</button>
+                <button>submit</button> <button type="button" class="cancel">Cancel</button>
                 <!-- <input type="button" value="Submit" id="btnsubmit" -->
             </form>
         </div>
-        <div id="task-popup">
+
+        <div class="hide" id="projectedit-popup">
+            <form class="form" autocomplete=off id="projectEditForm">
+                <!-- Text Input -->
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="editProjectName" name="projectName" placeholder="Enter Project name..." required>
+
+                <label for="projectDescription"> Description:</label>
+                <textarea type="text" id="editProjectDescription" name="description" rows="4" cols="40"
+                    placeholder="Explain" required></textarea>
+
+
+                <!-- Submit Button -->
+                <button>submit</button> <button type="button" class="cancel">Cancel</button>
+                <!-- <input type="button" value="Submit" id="btnsubmit" -->
+            </form>
+        </div>
+        <div class="popUp" id="task-popup">
             <form class="form" autocomplete=off id="taskForm">
                 <!-- Text Input -->
                 <label for="taskName">Task Name:</label>
@@ -82,7 +100,7 @@
 
 
                 <!-- Submit Button -->
-                <button class="task-submit"> submit</button>
+                <button class="taskSubmit">submit</button> <button type="button" class="cancel">Cancel</button>
                 <!-- <input type="button" value="Submit" id="btnsubmit" -->
             </form>
         </div>
@@ -92,10 +110,8 @@
                 <label for="logName">Log Name:</label>
                 <input type="text" id="logName" name="LogName" placeholder="Enter Log..." required>
 
-
-
                 <!-- Submit Button -->
-                <button id="logSubmit">submit</button>
+                <button>submit</button> <button type="button" class="cancel">Cancel</button>
                 <!-- <input type="button" value="Submit" id="btnsubmit" -->
             </form>
         </div>
