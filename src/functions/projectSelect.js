@@ -1,4 +1,3 @@
-//import { list } from "../storage/lists";
 import list from "../storage/list";
 export default function projectSelect(event) {
 

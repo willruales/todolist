@@ -3,7 +3,6 @@ export default function populateTable(tasks) {
 
     tbodyElement.innerHTML = "";
 
-    // Loop through the array of tasks and create table rows for each task
     tasks.forEach((task, index) => {
         const row = document.createElement("tr");
 
@@ -19,11 +18,9 @@ export default function populateTable(tasks) {
         checkboxCell.appendChild(checkbox);
         checkboxCell.dataset.userid = index
 
-        checkbox.checked = task.completed; // Set the checkbox state based on "completed"
-
-        // Add an event listener to the checkbox to update the "completed" property
+        checkbox.checked = task.completed;
         checkbox.addEventListener("change", function () {
-            task.completed = checkbox.checked; // Update the task's "completed" property
+            task.completed = checkbox.checked;
         });
 
 

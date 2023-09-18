@@ -69,24 +69,13 @@ projectForm.addEventListener("submit", function (event) {
 
 projectList.addEventListener("click", function (event) {
     if (event.target.classList.contains("edit")) {
-        eventSelect = projectSelect(event)//rearange select att on html
-
+        eventSelect = projectSelect(event)
         const test = event.target.parentElement.getAttribute('data-userid');
         console.log(test)
-        eventSelect = projectSelect(event)//rearange select att on html
+        eventSelect = projectSelect(event)
 
 
         editForm.style.display = "flex";
-        // const nameInput = document.getElementById("ProjectName");
-        // const descriptionInput = document.getElementById("ProjectDescription");
-        // nameInput.value = eventSelect.name;
-        // descriptionInput.value = eventSelect.description;
-
-
-
-
-
-
 
         const editButton = document.querySelector(".edit");
 
