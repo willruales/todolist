@@ -41,9 +41,6 @@ export default class project {
     appendProject = () => {
         const projectList = document.querySelector(".projectList")
         const form = document.querySelector('.form');
-        const modifiedName = this.name.replace(/ /g, "");
-
-
         const projectItem = document.createElement("li");
 
         projectItem.classList.add("project");

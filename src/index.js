@@ -1,6 +1,5 @@
 import "./style.css";
 import project from "./project";
-import { format, compareAsc } from 'date-fns'
 
 import populateTable from "./functions/populateTable";
 import popUp from "./functions/popUp";
@@ -8,39 +7,30 @@ import projectSelect from "./functions/projectSelect";
 import list from "./storage/list";
 import populateLogTable from "./functions/populateLogTable";
 import { taskData } from "./storage/task";
-import { taskSelect } from "./functions/taskSelect";
-import { log } from "./storage/log";
 import createProjectListItem from "./functions/loopList";
 import deleteProject from "./functions/deleteProject";
-import hidePopUp from "./functions/hidePopUp";
 
 
 
 const projectForm = document.getElementById('projectForm');
 const newTask = document.querySelector(".createNew");;
 const projectList = document.querySelector(".projectList")
-const taskbox = document.querySelector(".tasks")
+const taskbox = document.querySelector("#taskTable")
 const projectpopup = document.getElementById("project-popup");
 const projectpopupedit = document.getElementById("projectedit-popup");
 const editForm = document.getElementById("projectedit-popup");
 
-const projecteditsubmit = projectpopupedit.querySelector("button")
 const taskSubmit = document.querySelector(".taskSubmit")
-const form = document.querySelector('.form');
 const taskpopup = document.getElementById("task-popup")
 const projectHeader = document.querySelector(".projectHeader")
 const projectDescription = document.querySelector(".projectDescription")
-const taskTable = document.querySelector(".taskTable")
 const logRowButton = document.getElementById("addLogButton");
 const logPop = document.querySelector("#log-popup")
-const logSubmit = document.querySelector("#logSubmit");
 const logTable = document.querySelector('.logTable');
 const logTableBody = document.getElementById('logtablebody');
-const taskHeader = document.querySelector(".taskTitle")
-const deleteButton = document.querySelector(".delete-button")
+const taskHeader = document.querySelector(".taskTitle");
 
 
-let projectListElements = null;
 
 newTask.addEventListener("click", popUp);
 
@@ -96,17 +86,17 @@ projectList.addEventListener("click", function (event) {
         eventSelect = projectSelect(event);
         deleteProject(eventSelect.modifiedName);
         projectList.innerHTML = "";
-
+        console.log(taskbox)
+        taskbox.style.display = "none";
         createProjectListItem();
 
     }
 
     else {
         event.preventDefault()
-        eventSelect = projectSelect(event)//rearange select att on html
+        eventSelect = projectSelect(event)
         console.log(eventSelect)
         eventSelect.createTable()
-        //populateTable(eventSelect.tasks)
         eventSelect.appendTable()
 
         projectHeader.innerHTML = eventSelect.name;
@@ -123,7 +113,6 @@ projectList.addEventListener("click", function (event) {
 taskpopup.addEventListener("submit", function (event) {
     event.preventDefault()
     const form = taskSubmit.parentElement;
-    //eventSelect = projectSelect(event)
     newTaskSelect = Object.create(taskData)
     newTaskSelect.logs = [];
     for (const field of form.elements) {
