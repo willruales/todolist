@@ -57,7 +57,7 @@ body {
 
 .tasks {
     width: 900px;
-    background-color: rgba(195, 157, 16, 0.766);
+    background-color: rgba(182, 225, 214, 0.766);
     display: inline;
 
 }
@@ -90,8 +90,7 @@ body {
 .sidebar li {
 
     font-size: 30px;
-    font-size: 30px;
-    padding-top: 20px;
+    height: 30px;
     padding-left: 10px;
     word-wrap: anywhere;
     display: flex;
@@ -117,19 +116,21 @@ body {
     margin-left: 0;
 }
 
-@media screen and (max-width: 768px) {
-    .sidebar {
-        left: -100%;
-    }
 
-    .open .sidebar {
-        left: 0;
-    }
 
-    .content {
-        margin-left: 0;
-    }
+
+.sidebar {
+    left: -100%;
 }
+
+.open .sidebar {
+    left: 0;
+}
+
+.content {
+    margin-left: 0;
+}
+
 
 .project {
 
@@ -143,6 +144,7 @@ body {
     display: flex;
     /* background-color: #dc3545;
     color: white; */
+    align-items: center;
 }
 
 .project:hover {
@@ -152,7 +154,7 @@ body {
 
 .project:hover .modify {
 
-    display: flex;
+    display: inline-flex;
 }
 
 .modify {
@@ -181,7 +183,7 @@ body {
 
 .edit:hover {
     display: block;
-    color: rgba(195, 157, 16, 0.766)
+    color: rgba(25, 195, 16, 0.766)
 }
 
 .delete:hover {
@@ -209,9 +211,9 @@ th {
     background-color: #f2f2f2;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: #f2f2f2;
-}
+} */
 
 .add-row-button {
     display: block;
@@ -238,11 +240,6 @@ td {
     padding: 8px;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-
 .taskTable {
     width: 100%;
     border-collapse: collapse;
@@ -263,4 +260,27 @@ tr:nth-child(even) {
 .taskTitle {
 
     font-size: 20px;
+}
+
+.tbody {
+    text-decoration: underline;
+}
+
+table.table tbody tr:hover {
+    background-color: #f2f2f2;
+    /* Change the background color on hover */
+}
+
+@media screen and (max-width:1500px) {
+
+    .tasks {
+        width: 500px;
+        background-color: rgba(97, 62, 173, 0.766);
+        display: inline;
+
+    }
+
+    .projectInterFace {
+        width: 300px;
+    }
 }
