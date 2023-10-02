@@ -13,6 +13,8 @@ Must improve quality of name assignment
 
 Complete html and css thoughtfully 
 
+More Detailed UX design!!!
+
 Further use webpack configs to enhance development experience
 
 ACCESS bundle from ff/gc devops.
